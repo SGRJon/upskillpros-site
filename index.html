@@ -211,6 +211,13 @@ img{max-width:100%;display:block}
   box-shadow:0 0 40px rgba(143,184,222,.3),0 12px 26px rgba(0,0,0,.5);
 }
 .okcta.show{display:inline-block}
+.altpath{
+  display:inline-block;margin-top:18px;text-decoration:none;border-radius:100px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.62rem;letter-spacing:.16em;
+  color:var(--glow);border:1px solid var(--hud);padding:13px 22px;background:rgba(5,13,23,.5);
+  transition:border-color .3s,box-shadow .3s;
+}
+.altpath:hover{border-color:var(--glow);box-shadow:0 0 26px rgba(143,184,222,.25)}
 .notemsg{margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.08em;color:var(--warn);min-height:1.2em}
 @keyframes ctapulse{
   0%{box-shadow:0 0 46px rgba(143,184,222,.35),0 14px 30px rgba(0,0,0,.5),0 0 0 0 rgba(143,184,222,.45)}
@@ -305,6 +312,7 @@ img{max-width:100%;display:block}
   .fi{font-size:1.05rem}
   .cta{font-size:.86rem;letter-spacing:.13em}
   .okcta{font-size:.8rem}
+  .altpath{font-size:.72rem}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -416,6 +424,7 @@ img{max-width:100%;display:block}
       <div class="okmsg" id="ok">Thanks! We will be in touch within one business day to set up your free consultation.</div>
       <a class="okcta" id="seemore" href="what-we-build.html">SEE WHAT WE BUILD →</a>
       <div class="notemsg" id="note"></div>
+      <a class="altpath" id="notready" href="what-we-build.html">NOT READY? SEE WHAT WE BUILD →</a>
     </div>
     <button id="replay" class="pop d4">↺ REPLAY THE STORY</button>
   </section>
@@ -550,7 +559,7 @@ const KEY_READY = /^[0-9a-f-]{30,}$/i.test(WEB3FORMS_KEY);
 const email=document.getElementById('email'), go=document.getElementById('go'),
       ok=document.getElementById('ok'), field=document.getElementById('field'), note=document.getElementById('note');
 const valid=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-function done(){ field.style.display='none'; note.style.display='none'; ok.classList.add('show'); document.getElementById('seemore').classList.add('show'); if(navigator.vibrate)navigator.vibrate([10,40,10]); }
+function done(){ field.style.display='none'; note.style.display='none'; document.getElementById('notready').style.display='none'; ok.classList.add('show'); document.getElementById('seemore').classList.add('show'); if(navigator.vibrate)navigator.vibrate([10,40,10]); }
 async function submitEmail(){
   const v=email.value.trim();
   if(!valid(v)){ note.textContent='Please enter a valid email address.'; email.focus(); return; }
