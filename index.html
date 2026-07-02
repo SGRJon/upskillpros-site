@@ -211,10 +211,11 @@ img{max-width:100%;display:block}
   box-shadow:0 0 40px rgba(143,184,222,.3),0 12px 26px rgba(0,0,0,.5);
 }
 .okcta.show{display:inline-block}
+.altlead{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.22em;color:var(--faint)}
 .altpath{
-  display:inline-block;margin-top:18px;text-decoration:none;border-radius:100px;
-  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.62rem;letter-spacing:.16em;
-  color:var(--glow);border:1px solid var(--hud);padding:13px 22px;background:rgba(5,13,23,.5);
+  display:inline-block;margin-top:10px;text-decoration:none;border-radius:100px;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--glow);border:1px solid var(--hud);padding:17px 28px;background:rgba(5,13,23,.5);
   transition:border-color .3s,box-shadow .3s;
 }
 .altpath:hover{border-color:var(--glow);box-shadow:0 0 26px rgba(143,184,222,.25)}
@@ -312,7 +313,8 @@ img{max-width:100%;display:block}
   .fi{font-size:1.05rem}
   .cta{font-size:.86rem;letter-spacing:.13em}
   .okcta{font-size:.8rem}
-  .altpath{font-size:.72rem}
+  .altpath{font-size:.86rem;letter-spacing:.13em}
+  .altlead{font-size:.7rem}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -424,7 +426,10 @@ img{max-width:100%;display:block}
       <div class="okmsg" id="ok">Thanks! We will be in touch within one business day to set up your free consultation.</div>
       <a class="okcta" id="seemore" href="what-we-build.html">SEE WHAT WE BUILD →</a>
       <div class="notemsg" id="note"></div>
-      <a class="altpath" id="notready" href="what-we-build.html">NOT READY? SEE WHAT WE BUILD →</a>
+      <div id="notready">
+        <div class="altlead">NOT READY YET?</div>
+        <a class="altpath" href="what-we-build.html">SEE WHAT WE BUILD →</a>
+      </div>
     </div>
     <button id="replay" class="pop d4">↺ REPLAY THE STORY</button>
   </section>
