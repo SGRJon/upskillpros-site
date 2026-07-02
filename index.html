@@ -281,6 +281,8 @@ img{max-width:100%;display:block}
     pointer-events:none;transition:color .3s;line-height:1;
   }
   #chevL{left:2.2vw}#chevR{right:2.2vw}
+  .chev.act{pointer-events:auto;cursor:pointer}
+  .chev.act:hover{color:var(--glow)}
 }
 @media (max-width:899px){.chev{display:none}}
 
@@ -483,8 +485,8 @@ function show(i){
   document.getElementById('skipbook').style.display=last?'none':'';
   document.getElementById('hdrmore').style.display=last?'':'none';
   const cL=document.getElementById('chevL'),cR=document.getElementById('chevR');
-  if(cL){cL.style.opacity=(last||cur===0)&&cur===0?'.0':'';cL.style.opacity=cur===0?'0':(last?'0':'');}
-  if(cR){cR.style.opacity=last?'0':'';}
+  if(cL){cL.style.opacity=cur===0?'0':'';cL.classList.toggle('act',cur>0);}
+  if(cR){cR.style.opacity=last?'0':'';cR.classList.toggle('act',!last);}
   if(navigator.vibrate)navigator.vibrate(8);
 }
 function tick(t){
@@ -507,6 +509,8 @@ tapcue.textContent=CUE;
 /* tap zones */
 document.getElementById('zoneR').addEventListener('click',()=>show(cur+1));
 document.getElementById('zoneL').addEventListener('click',()=>show(cur-1));
+document.getElementById('chevR').addEventListener('click',()=>show(cur+1));
+document.getElementById('chevL').addEventListener('click',()=>show(cur-1));
 /* hold to pause */
 let holdT=null;
 addEventListener('pointerdown',e=>{
