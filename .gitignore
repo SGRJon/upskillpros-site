@@ -1,0 +1,5 @@
+# Design assets and archives live outside the repo
+*.zip
+
+# macOS
+.DS_Store
