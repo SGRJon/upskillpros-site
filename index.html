@@ -212,6 +212,20 @@ img{max-width:100%;display:block}
 }
 .okcta.show{display:inline-block}
 .altlead{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.22em;color:var(--faint)}
+#privlink{
+  position:absolute;left:0;right:0;z-index:36;
+  bottom:calc(env(safe-area-inset-bottom,0px) + 44px);
+  text-align:center;pointer-events:none;
+  opacity:0;transition:opacity .5s ease;
+}
+.slide.on #privlink{opacity:1}
+#privlink a{
+  pointer-events:auto;display:inline-block;padding:6px 10px;
+  font-family:'JetBrains Mono',monospace;font-size:.52rem;font-weight:500;
+  letter-spacing:.22em;color:rgba(232,241,250,.34);text-decoration:none;
+  transition:color .2s;
+}
+#privlink a:hover,#privlink a:focus-visible{color:var(--glow)}
 .altpath{
   display:inline-block;margin-top:10px;text-decoration:none;border-radius:100px;
   font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
@@ -432,6 +446,7 @@ img{max-width:100%;display:block}
       </div>
     </div>
     <button id="replay" class="pop d4">↺ REPLAY THE STORY</button>
+    <div id="privlink"><a href="privacy.html">PRIVACY POLICY</a></div>
   </section>
 
   <div id="zoneL" aria-hidden="true"></div>

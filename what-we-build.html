@@ -250,6 +250,10 @@ a{color:inherit}
 /* ===== footer ===== */
 footer{padding:0 0 46px;text-align:center}
 footer p{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;color:var(--faint)}
+footer nav{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:center}
+footer nav a{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.14em;
+  color:var(--faint);text-decoration:none;transition:color .2s}
+footer nav a:hover,footer nav a:focus-visible{color:var(--glow)}
 
 /* ===== reveal on scroll ===== */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
@@ -491,6 +495,11 @@ a:focus-visible,.cta:focus-visible{outline:2px solid var(--glow);outline-offset:
 
 <footer>
   <p>UPSKILLPROS LLC · SPRINGFIELD, MO</p>
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="consult.html">FREE CONSULT</a>
+    <a href="privacy.html">PRIVACY</a>
+  </nav>
 </footer>
 
 <script>
