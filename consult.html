@@ -208,6 +208,10 @@ footer{margin-top:64px;padding:26px 0 40px;border-top:1px solid rgba(79,134,184,
           <input id="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="417 555 0100">
         </div>
 
+        <!-- honeypot: invisible to people, irresistible to form bots -->
+        <input type="checkbox" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;pointer-events:none">
+
         <div class="field">
           <label for="pain">What's slowing you down?</label>
           <textarea id="pain" placeholder="The report that takes three days. The two spreadsheets that never match. Whatever it is."></textarea>
@@ -259,6 +263,15 @@ const name=el('name'), email=el('email'), phone=el('phone'), pain=el('pain'),
 
 const validEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
+/* spam gate: a person needs several seconds to fill four fields; bots submit instantly
+   and tick every box they find. Either signal -> pretend to succeed, send nothing. */
+const PAGE_LOADED = Date.now();
+const MIN_HUMAN_MS = 4000;
+function looksLikeBot(){
+  const hp = document.getElementById('botcheck');
+  return (hp && hp.checked) || (Date.now() - PAGE_LOADED) < MIN_HUMAN_MS;
+}
+
 function fail(field, msg){
   field.classList.add('bad');
   note.textContent = msg;
@@ -285,6 +298,8 @@ async function submitForm(){
 
   go.disabled = true; go.textContent = 'Sending...';
 
+  if (looksLikeBot()){ succeed(); return; }
+
   if (KEY_READY){
     try{
       const r = await fetch(NOTIFY_ENDPOINT,{
@@ -298,7 +313,8 @@ async function submitForm(){
           email: e,
           phone: p || 'not provided',
           message: x,
-          source: 'consult.html'
+          source: 'consult.html',
+          botcheck: false
         })
       });
       if (r.ok) { succeed(); }

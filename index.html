@@ -212,15 +212,9 @@ img{max-width:100%;display:block}
 }
 .okcta.show{display:inline-block}
 .altlead{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:500;letter-spacing:.22em;color:var(--faint)}
-#privlink{
-  position:absolute;left:0;right:0;z-index:36;
-  bottom:calc(env(safe-area-inset-bottom,0px) + 44px);
-  text-align:center;pointer-events:none;
-  opacity:0;transition:opacity .5s ease;
-}
-.slide.on #privlink{opacity:1}
+#privlink{margin-top:14px;text-align:center}
 #privlink a{
-  pointer-events:auto;display:inline-block;padding:6px 10px;
+  display:inline-block;padding:6px 10px;
   font-family:'JetBrains Mono',monospace;font-size:.52rem;font-weight:500;
   letter-spacing:.22em;color:rgba(232,241,250,.34);text-decoration:none;
   transition:color .2s;
@@ -435,6 +429,9 @@ img{max-width:100%;display:block}
       <div class="field" id="field">
         <input class="fi" id="email" type="email" inputmode="email" autocomplete="email"
                placeholder="you@company.com" aria-label="Email address">
+        <!-- honeypot: invisible to people, irresistible to form bots -->
+        <input type="checkbox" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:absolute;left:-10000px;width:1px;height:1px;opacity:0;pointer-events:none">
         <button class="cta" id="go" type="button">Book my free consult</button>
       </div>
       <div class="okmsg" id="ok">Thanks! We will be in touch within one business day to set up your free consultation.</div>
@@ -446,7 +443,7 @@ img{max-width:100%;display:block}
       </div>
     </div>
     <button id="replay" class="pop d4">↺ REPLAY THE STORY</button>
-    <div id="privlink"><a href="privacy.html">PRIVACY POLICY</a></div>
+    <div id="privlink" class="pop d4"><a href="privacy.html">PRIVACY POLICY</a></div>
   </section>
 
   <div id="zoneL" aria-hidden="true"></div>
@@ -579,11 +576,20 @@ const KEY_READY = /^[0-9a-f-]{30,}$/i.test(WEB3FORMS_KEY);
 const email=document.getElementById('email'), go=document.getElementById('go'),
       ok=document.getElementById('ok'), field=document.getElementById('field'), note=document.getElementById('note');
 const valid=v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+/* spam gate: humans need seven taps and a few seconds to get here; bots submit instantly
+   and tick every box they find. Either signal -> pretend to succeed, send nothing. */
+const PAGE_LOADED = Date.now();
+const MIN_HUMAN_MS = 4000;
+function looksLikeBot(){
+  const hp = document.getElementById('botcheck');
+  return (hp && hp.checked) || (Date.now() - PAGE_LOADED) < MIN_HUMAN_MS;
+}
 function done(){ field.style.display='none'; note.style.display='none'; document.getElementById('notready').style.display='none'; ok.classList.add('show'); document.getElementById('seemore').classList.add('show'); if(navigator.vibrate)navigator.vibrate([10,40,10]); }
 async function submitEmail(){
   const v=email.value.trim();
   if(!valid(v)){ note.textContent='Please enter a valid email address.'; email.focus(); return; }
   go.disabled=true; go.textContent='Sending...';
+  if(looksLikeBot()){ done(); return; }
   if(KEY_READY){
     try{
       const r=await fetch(NOTIFY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
@@ -592,7 +598,8 @@ async function submitEmail(){
           subject:'Free consultation request — upskillpros.com',
           from_name:'UpSkillPros Website',
           email:v,
-          interest:'Free consultation'
+          interest:'Free consultation',
+          botcheck:false
         })});
       if(r.ok){done();} else {throw new Error();}
     }catch(e){ note.textContent='Something went wrong. Please email us directly at '+CONTACT_EMAIL+'.'; go.disabled=false; go.textContent='Book my free consult'; }

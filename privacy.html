@@ -68,6 +68,7 @@ main a:hover{border-color:var(--lift)}
 
 footer{margin-top:64px;padding:26px 0 44px;border-top:1px solid rgba(79,134,184,.18)}
 .ft{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;align-items:center}
+.ft p{margin:0}
 .ft p,.ft a{font-family:'JetBrains Mono',monospace;font-size:.58rem;font-weight:500;
   letter-spacing:.14em;color:var(--faint);text-decoration:none;border:0}
 .ft a:hover{color:var(--glow)}
@@ -87,7 +88,7 @@ footer{margin-top:64px;padding:26px 0 44px;border-top:1px solid rgba(79,134,184,
 <main>
   <p class="kick">Privacy</p>
   <h1>Privacy Policy</h1>
-  <p class="meta">EFFECTIVE 11 SEPTEMBER 2026</p>
+  <p class="meta">EFFECTIVE 18 SEPTEMBER 2026</p>
 
   <p class="lede">UpSkillPros LLC operates upskillpros.com. This page explains what we collect when you visit the site or contact us, why we collect it, who else can see it, and how to get it removed. We've written it in plain language on purpose.</p>
 
@@ -112,6 +113,7 @@ footer{margin-top:64px;padding:26px 0 44px;border-top:1px solid rgba(79,134,184,
 
   <h2>Information collected automatically</h2>
   <p>This site is hosted on <strong>Vercel</strong>. Like nearly all web hosts, Vercel records standard technical information when a page is served: IP address, browser and device type, the page requested, and the time of the request. This is used for security and reliability, not to build a profile of you.</p>
+  <p>We also use <strong>Vercel Web Analytics</strong> to see which pages get visited and roughly where visitors come from. It doesn't use cookies, doesn't track you across other sites, and doesn't identify you personally. It tells us that a page was viewed, not who viewed it.</p>
   <p>The site loads typefaces from <strong>Google Fonts</strong>. Your browser contacts Google's servers to fetch those font files, which means Google receives your IP address as part of that request.</p>
 
   <h2>Advertising and the Meta Pixel</h2>
@@ -188,5 +190,6 @@ footer{margin-top:64px;padding:26px 0 44px;border-top:1px solid rgba(79,134,184,
 </footer>
 
 </div>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
