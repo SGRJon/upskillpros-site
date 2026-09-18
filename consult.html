@@ -112,7 +112,7 @@ input,textarea{
 textarea{resize:vertical;min-height:92px;line-height:1.6}
 input::placeholder,textarea::placeholder{color:rgba(232,241,250,.3)}
 input:focus,textarea:focus{border-color:var(--lift);box-shadow:0 0 0 3px rgba(79,134,184,.2)}
-input.bad,textarea.bad{border-color:var(--err)}
+input.bad,textarea.bad,input.bad:focus,textarea.bad:focus{border-color:var(--err);box-shadow:0 0 0 3px rgba(196,84,58,.22)}
 
 button{
   margin-top:22px;width:100%;cursor:pointer;font-family:'Sora',sans-serif;
@@ -187,7 +187,7 @@ footer{margin-top:64px;padding:26px 0 40px;border-top:1px solid rgba(79,134,184,
   </section>
 
   <section>
-    <div class="card">
+    <div class="card" id="book">
 
       <div id="form">
         <h2>Tell us what's <em>slowing you down.</em></h2>
@@ -292,9 +292,9 @@ async function submitForm(){
   const n = name.value.trim(), e = email.value.trim(),
         p = phone.value.trim(), x = pain.value.trim();
 
-  if (n.length < 2)      return fail(name,  'Please tell us your name.');
-  if (!validEmail(e))    return fail(email, 'Please enter a valid email address.');
-  if (x.length < 5)      return fail(pain,  'One line about the problem helps us prepare.');
+  if (n.length < 2)      return fail(name,  'Name: please tell us who to reply to.');
+  if (!validEmail(e))    return fail(email, 'Email: that address doesn\'t look complete.');
+  if (x.length < 5)      return fail(pain,  'What\'s slowing you down: one line is all we need, but we do need it.');
 
   go.disabled = true; go.textContent = 'Sending...';
 
@@ -330,6 +330,13 @@ async function submitForm(){
       + '&body=' + encodeURIComponent(body);
     succeed();
   }
+}
+
+/* arriving from the story or another page with #book: land on the form, cursor in Name */
+if (location.hash === '#book'){
+  const card = document.querySelector('.card');
+  if (card) card.scrollIntoView({block:'start'});
+  setTimeout(() => name.focus({preventScroll:true}), 250);
 }
 
 go.addEventListener('click', submitForm);
