@@ -99,6 +99,15 @@ section.blk{padding:64px 0 10px}
 .tag.free{background:rgba(156,203,150,.16);color:var(--ok)}
 .tag.cl{background:rgba(143,184,222,.16);color:var(--glow)}
 .tag.note{background:rgba(217,142,106,.16);color:var(--warn)}
+.tag.pro{background:rgba(244,194,122,.16);color:var(--gold)}
+.pro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.pro-item{border-radius:16px;padding:18px 18px 16px;background:rgba(244,194,122,.05);border:1px solid rgba(244,194,122,.18)}
+.pro-item b{display:block;font-family:'Fraunces',serif;font-weight:400;font-size:1.06rem;margin-bottom:6px}
+.pro-item p{font-weight:300;font-size:.86rem;line-height:1.65;color:var(--dim)}
+.pro-item .tag{display:inline-block;margin:0 0 10px}
+.pro-note{margin-top:22px;font-size:.88rem;color:var(--dim);line-height:1.7;max-width:70ch}
+@media (max-width:900px){.pro-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.pro-grid{grid-template-columns:1fr}}
 
 /* ===== download ===== */
 #get{padding:70px 0 20px}
@@ -175,7 +184,7 @@ footer nav a:hover,footer nav a:focus-visible{color:var(--glow)}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg></a>
       <a class="ghost" href="quick-start.html">READ THE QUICK START →</a>
     </div>
-    <p class="meta">No account. No ads. Nothing to cancel.</p>
+    <p class="meta">Free to download and use. No account. No ads.</p>
   </div>
 </section>
 
@@ -196,12 +205,12 @@ footer nav a:hover,footer nav a:focus-visible{color:var(--glow)}
     <h2 class="h2" id="why-h">Most free job tools are paid for <em>by someone else</em>. This one isn't.</h2>
     <p class="sub">Job sites earn their money from employers, ads, or subscriptions, so your attention and your profile are part of the deal. Job Scout runs on your own computer and costs nothing to run, so it doesn't need anything from you.</p>
     <div class="grid">
-      <div class="card"><span class="n">01</span><h3>It works <em>for you</em>, not for employers</h3><p>No ads, no recruiters paying to reach you, no upsell, no paid tier. Nobody gets access to you through Job Scout.</p></div>
+      <div class="card"><span class="n">01</span><h3>It works <em>for you</em>, not for employers</h3><p>No ads, no recruiters paying to reach you, and nobody buying access to your profile. Nobody gets access to you through Job Scout.</p></div>
       <div class="card"><span class="n">02</span><h3>Your search stays <em>on your computer</em></h3><p>Your resume, the jobs you save, your notes, and where you've applied never sit on someone else's servers. That matters if you're searching quietly.</p></div>
       <div class="card"><span class="n">03</span><h3>It reads jobs against <em>your</em> resume</h3><p>With Claude, every job gets a fit score from 1 to 10 and a plain-English reason, checked against your own deal-breakers like pay floor and location.</p></div>
       <div class="card"><span class="n">04</span><h3>One inbox for <em>everything</em></h3><p>500+ company job boards, remote-job sites, and your LinkedIn, Indeed, and Glassdoor alert emails, merged with duplicates removed. No website can see your alert emails. Job Scout can.</p></div>
       <div class="card"><span class="n">05</span><h3>A command center, <em>not another feed</em></h3><p>It only shows what you haven't looked at yet. Save, mark Applied, track stages and notes, and export to a spreadsheet. "Thank you for applying" emails move jobs to Applied for you.</p></div>
-      <div class="card"><span class="n">06</span><h3>No account. <em>You keep it.</em></h3><p>Nothing to sign up for, nothing to cancel. It can't be shut down, paywalled, or changed on you later. Free and open source under the MIT License.</p></div>
+      <div class="card"><span class="n">06</span><h3>No account. <em>You keep it.</em></h3><p>Nothing to sign up for. The version you download keeps working on your computer, and the free features stay free. Provided as-is.</p></div>
     </div>
   </div>
 </section>
@@ -217,6 +226,7 @@ footer nav a:hover,footer nav a:focus-visible{color:var(--glow)}
           <li><span class="tag free">FREE</span><span><b>Finding jobs.</b> 500+ company boards, remote-job sites, and your alert emails, filtered by title and location.</span></li>
           <li><span class="tag free">FREE</span><span><b>Your command center.</b> Saved, Applied with stages and notes, export, and auto-marking from application emails.</span></li>
           <li><span class="tag cl">CLAUDE</span><span><b>Fit scores and reasons</b> for every job, plus a web search for jobs the boards miss. Needs a paid Claude plan (Pro or higher) and runs on your plan, not a separate bill.</span></li>
+          <li><span class="tag pro">PRO</span><span><b>Coming soon.</b> Job Scout Pro will add premium features for a small monthly price you can cancel anytime. <a href="#pro" style="color:var(--glow)">See what's planned</a>.</span></li>
         </ul>
       </div>
       <div class="card">
@@ -227,6 +237,27 @@ footer nav a:hover,footer nav a:focus-visible{color:var(--glow)}
         </ul>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== pro ===== -->
+<section class="blk" id="pro" aria-labelledby="pro-h">
+  <div class="wrap">
+    <p class="kick" style="color:var(--gold)">COMING SOON</p>
+    <h2 class="h2" id="pro-h">Job Scout <em>Pro</em>, for a search you're running like a project.</h2>
+    <p class="sub">Everything above stays free. Pro will add features for people who want Job Scout to do more of the tracking and the follow-through, for a small monthly price you can cancel anytime. These are proposed, and early-access feedback decides what ships first.</p>
+    <div class="pro-grid">
+      <div class="pro-item"><span class="tag pro">IN EARLY ACCESS</span><b>Rejections, filed for you</b><p>Rejection emails move the matching application to Closed automatically, so Applied only shows what's still alive.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Interview tracking</b><p>Interview invitations and calendar invites move a job to Interviewing on their own.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Your search, by the numbers</b><p>Applied to interview to offer, response rates by source, and how long companies take to reply.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Tailored resume and cover letter drafts</b><p>A first draft shaped to a specific posting, built from your own resume, for you to edit.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Interview prep briefs</b><p>Company background, the role in plain English, and likely questions for every job in Interviewing.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Follow-up nudges</b><p>Reminders for applications that have gone quiet, with a short follow-up note drafted for you.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Searches that run themselves</b><p>Job Scout searches on a schedule and sends a short morning summary of what's new.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Outlook and more inboxes</b><p>Outlook.com, plus more than one email account for alerts and application emails.</p></div>
+      <div class="pro-item"><span class="tag pro">PROPOSED</span><b>Multiple profiles</b><p>Separate searches for different goals, or for career coaches helping several people.</p></div>
+    </div>
+    <p class="pro-note">Want to know when Pro launches? Tick <b>Tell me when Job Scout Pro launches</b> when you download. Early-access testers can try the Pro features that are ready, free, while they're being built.</p>
   </div>
 </section>
 
@@ -245,11 +276,12 @@ footer nav a:hover,footer nav a:focus-visible{color:var(--glow)}
           <label for="email">Email <span style="color:var(--faint)">(optional)</span></label>
           <input type="email" id="email" autocomplete="email">
           <label class="chk"><input type="checkbox" id="updates"> Email me when there's a new version of Job Scout</label>
+          <label class="chk"><input type="checkbox" id="pronotify"> Tell me when Job Scout Pro launches</label>
           <!-- honeypot: invisible to people, irresistible to form bots -->
           <input type="checkbox" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
           <p class="note" id="note" role="alert"></p>
           <button class="cta" id="go" type="button" style="margin-top:6px">Show my download</button>
-          <p class="fine">I ask for your name and LinkedIn profile so I can say hello and connect, nothing more. There's no account, email is optional and only for update notices, and I never sell or share anything. <a href="../privacy.html" style="color:var(--glow)">Privacy</a></p>
+          <p class="fine">I ask for your name and LinkedIn profile so I can say hello and connect, nothing more. There's no account, email is optional and only used for the notices you ask for, and I never sell or share anything. <a href="../privacy.html" style="color:var(--glow)">Privacy</a></p>
         </form>
         <div class="dl" id="dl" aria-live="polite">
           <p class="sub" style="margin-top:6px" id="thanks">Thanks! Here's Job Scout.</p>
@@ -285,7 +317,7 @@ footer nav a:hover,footer nav a:focus-visible{color:var(--glow)}
     <h2 class="h2" id="who-h">Built by a job seeker, <em>for job seekers</em>.</h2>
     <div class="builder" style="margin-top:20px">
       <div>
-        <p>I'm Jon Richards. I built Job Scout during my own job search, after a reduction in force, because I was tired of reading the same postings on five different sites and losing track of where I'd applied. It's the tool I wanted, and it's free because it doesn't cost me anything to share.</p>
+        <p>I'm Jon Richards. I built Job Scout during my own job search, after a reduction in force, because I was tired of reading the same postings on five different sites and losing track of where I'd applied. It's the tool I wanted. The core of it is free because it doesn't cost me anything to share, and Job Scout Pro will add more for people who want it.</p>
         <p>I run <a href="../index.html">UpSkillPros</a>, where I help organizations put AI and better systems to work. If Job Scout helps your search, I'd love to hear about it. <a href="https://www.linkedin.com/in/jonrrichards/" target="_blank" rel="noopener">Say hello on LinkedIn</a>.</p>
       </div>
     </div>
@@ -350,13 +382,14 @@ async function submit(){
   if (n.length < 2) return fail(name, 'Name: please tell me who you are.');
   if (!/linkedin\.com\//i.test(l)) return fail(li, 'LinkedIn: paste your profile link, like linkedin.com/in/your-name.');
   if (e && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) return fail(email, "Email: that address doesn't look complete. It's optional, so you can leave it blank.");
+  if (!e && (updates.checked || el('pronotify').checked)) return fail(email, "Email: add your address so I can send the notice you asked for, or untick the box.");
   go.disabled = true; go.textContent = 'One moment...';
   if (looksLikeBot()) { reveal(true); return; }
   if (KEY_READY){
     try{
       await fetch(NOTIFY_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify({access_key: WEB3FORMS_KEY, subject: 'Job Scout download: ' + n, from_name: 'Job Scout download page',
-          name: n, linkedin: l, email: e || 'not provided', updates: updates.checked ? 'yes' : 'no',
+          name: n, linkedin: l, email: e || 'not provided', updates: updates.checked ? 'yes' : 'no', pro_launch: el('pronotify').checked ? 'yes' : 'no',
           system: isWin ? 'Windows' : isMac ? 'Mac' : 'other', source: 'job-scout/index.html', botcheck: false})});
     } catch(err) { /* never block the download over a notification */ }
   }
