@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "download_url": "https://upskillpros.com/job-scout/#get",
-  "notes": "Fixes Windows setup getting stuck on \"Setting up…\", plus clearer note saving."
+  "notes": "Results appear while you wait, searches are faster, 2,800+ career pages, and setup suggests your job titles from your resume."
 }
