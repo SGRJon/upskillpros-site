@@ -367,28 +367,63 @@ a:focus-visible,.cta:focus-visible{outline:2px solid var(--glow);outline-offset:
 <!-- ===== case 03 ===== -->
 <section class="case">
   <div class="wrap">
-    <div class="kick rv">CASE STUDY 03 · HOW I BUILD</div>
-    <h2 class="rv">How one person ships all of this: <em>the AI operating system.</em></h2>
-    <p class="lead rv">I run my practice on a working system I designed for building with AI, with Claude as my daily toolset. It's not asking a chatbot for code. It's an operating discipline.</p>
+    <div class="kick rv">CASE STUDY 03 · AI JOB SEARCH</div>
+    <h2 class="rv">A job search assistant that reads the jobs <em>so you don't have to.</em></h2>
+    <p class="lead rv">Job boards bury good openings under reposts, sponsored listings, and roles that don't fit. So I built a tool that goes straight to employers' own career pages and lets Claude do the first read. I'm using it in my own search right now.</p>
     <div class="duo">
       <article class="card rv">
-        <div class="ck">HOW IT WORKS</div>
+        <div class="ck">WHAT I BUILT</div>
         <ul>
-          <li><b style="color:var(--ice);font-weight:500">Persistent project memory.</b> Every product has a durable record of decisions, conventions, and hard-won lessons, so no session starts from zero.</li>
-          <li><b style="color:var(--ice);font-weight:500">Sidecar documentation.</b> Each project carries a living document of its architecture and standards. The AI reads it before writing a line.</li>
-          <li><b style="color:var(--ice);font-weight:500">Reusable briefs.</b> Recurring work runs from written playbooks, so quality is repeatable instead of lucky.</li>
-          <li><b style="color:var(--ice);font-weight:500">Verification before delivery.</b> Everything gets rendered, tested, and checked before it ships. AI accelerates the work; it doesn't get to skip the standards.</li>
+          <li>A desktop app for Mac and Windows that reads 2,800+ company career pages, six remote-job sites, and the user's own job-alert emails, then removes the duplicates</li>
+          <li>Claude reads the user's resume to suggest the job titles to search for, then scores every match from 1 to 10 with a one-line reason. Matches start appearing within seconds</li>
+          <li>Spots "thank you for applying" and rejection emails and moves those jobs to Applied or Closed on its own</li>
+          <li>Private by design: no account and no server. The search, the resume, and the notes stay on the user's computer</li>
         </ul>
       </article>
       <article class="card rv">
-        <div class="ck">WHAT IT PRODUCES</div>
+        <div class="ck">STATUS</div>
+        <p>In early access with beta testers, free to download. Built with Claude Code and first released October 5, 2026, with four releases in the first two days. Every release is built and tested automatically on real Mac and Windows machines before it ships.</p>
+        <div class="tags">
+          <span class="tag">PYTHON</span><span class="tag">CLAUDE CODE</span><span class="tag">CLAUDE HAIKU + SONNET</span>
+          <span class="tag">GITHUB ACTIONS</span><span class="tag">MAC + WINDOWS</span>
+        </div>
+        <p style="margin-top:22px"><a class="cta" href="job-scout/">See Job Scout</a></p>
+      </article>
+    </div>
+    <div class="shots">
+      <figure class="shot rv">
+        <img src="job-scout/job-scout-screenshot.png" loading="lazy" alt="Job Scout showing new job matches, each with a fit score, salary, remote tag and a one-line reason it fits, with filters and Saved and Applied lists in the left menu">
+        <figcaption>NEW MATCHES · FIT SCORES, SALARIES, AND THE REASON EACH JOB FITS · DEMO PROFILE · TAP TO ENLARGE</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== case 04 ===== -->
+<section class="case">
+  <div class="wrap">
+    <div class="kick rv">CASE STUDY 04 · HOW I BUILD</div>
+    <h2 class="rv">How one person ships all of this: <em>a human in the loop.</em></h2>
+    <p class="lead rv">I build with Claude every day, and I decide what ships. AI drafts and codes fast. My job is the part it can't do: deciding what's worth building, checking the result against the real need, and refusing to ship anything that doesn't hold up. That's the difference between AI-assisted work and AI slop.</p>
+    <div class="duo">
+      <article class="card rv">
+        <div class="ck">WHAT I DO THAT AI DOESN'T</div>
         <ul>
-          <li>Production platforms like the two above, built in weeks, not quarters</li>
-          <li>Documentation and training that let client teams run tools without me</li>
-          <li>Workflow automation from data ingestion to document generation</li>
+          <li><b style="color:var(--ice);font-weight:500">I set the direction.</b> Every project starts with what the people using it actually need, written down before any code exists. Claude works from that, not from a guess.</li>
+          <li><b style="color:var(--ice);font-weight:500">I test it like a user.</b> I use what gets built, with realistic data on real devices, and try to break it. If something confuses me, it gets fixed before anyone else sees it.</li>
+          <li><b style="color:var(--ice);font-weight:500">I check the claims.</b> Totals, security rules, and what a tool says it does get verified, not taken on the AI's word.</li>
+          <li><b style="color:var(--ice);font-weight:500">Lessons stick.</b> When something goes wrong, the fix comes with a written rule or an automatic check, so the same mistake doesn't come back.</li>
+        </ul>
+      </article>
+      <article class="card rv">
+        <div class="ck">WHAT THAT LOOKS LIKE ON THIS PAGE</div>
+        <ul>
+          <li><b style="color:var(--ice);font-weight:500">The treasury.</b> Bank statements are checked to the penny before a single row is saved, and no check is recorded until it's printed.</li>
+          <li><b style="color:var(--ice);font-weight:500">Job Scout.</b> Every release is tested automatically on real Mac and Windows machines. In its first week, testing caught a Windows crash and a Mac bug that would have broken every search, before either reached more users.</li>
+          <li><b style="color:var(--ice);font-weight:500">Every screenshot.</b> Client data never appears on a public page. What you see here is demo data.</li>
         </ul>
         <div class="ck">WHY IT MATTERS TO YOU</div>
-        <p>This system is why a solo practice delivers on timelines that used to take a team, and it's teachable. Building it for your organization is one of the things I do.</p>
+        <p>You get AI speed without AI slop: a solo practice delivering on timelines that used to take a team, with a person accountable for every result. And it's teachable. Helping your team work this way is one of the things I do.</p>
         <p class="note">A short walkthrough video is coming to this page. Until then, I'll happily share my screen and build something in front of you.</p>
       </article>
     </div>
