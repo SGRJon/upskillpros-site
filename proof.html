@@ -77,6 +77,11 @@ a{color:inherit}
   text-transform:uppercase;color:var(--glow);border:1px solid var(--hud);
   padding:12px 18px;border-radius:100px;background:rgba(5,13,23,.4);text-align:center;line-height:1.7;
 }
+.jump{margin-top:22px;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:700;letter-spacing:.14em;color:var(--faint);line-height:2}
+.jump a{color:var(--glow);text-decoration:none;border-bottom:1px solid var(--hud);transition:border-color .2s}
+.jump a:hover,.jump a:focus-visible{border-color:var(--glow)}
+/* the sticky header is ~56px tall; without this, jump links land with the section heading tucked under it */
+#technical-builds,#communications-work{scroll-margin-top:80px}
 
 /* ===== case sections ===== */
 .case{padding:58px 0 6px}
@@ -234,11 +239,12 @@ a:focus-visible,.cta:focus-visible{outline:2px solid var(--glow);outline-offset:
     <h1 class="rv">We don't just describe the work. <em>Here it is.</em></h1>
     <p class="rv">Real platforms in production, built end to end with AI as the daily toolset.</p>
     <div class="rv"><span class="demoline">WANT TO SEE IT RUNNING? ASK. THE DEMO BEATS THE DESCRIPTION.</span></div>
+    <nav class="jump rv" aria-label="Jump to section">Jump to: <a href="#technical-builds">Technical Builds</a> · <a href="#communications-work">Communications Work</a></nav>
   </div>
 </section>
 
 <!-- ===== case 01 ===== -->
-<section class="case">
+<section class="case" id="technical-builds">
   <div class="wrap">
     <div class="kick rv">CASE STUDY 01 · FINANCIAL OPERATIONS</div>
     <h2 class="rv">A treasury that ran on manual entry <em>now runs itself.</em></h2>
@@ -442,7 +448,7 @@ a:focus-visible,.cta:focus-visible{outline:2px solid var(--glow);outline-offset:
 </section>
 
 <!-- ===== communications work ===== -->
-<section class="case">
+<section class="case" id="communications-work">
   <div class="wrap">
     <h2 class="rv">Communications Work</h2>
     <p class="lead rv">For seven years I owned how leadership's biggest messages reached employees: the CEO's company-wide emails, a company vision rollout, the internal communications calendar, and the guides managers used to talk with their teams. These samples are anonymized. Company, client, and employee names have been removed.</p>
@@ -509,6 +515,24 @@ a:focus-visible,.cta:focus-visible{outline:2px solid var(--glow);outline-offset:
     els.forEach(function(e){ io.observe(e); });
   }
 
+
+  /* ---- jump links ----
+     The screenshots are lazy-loaded with no fixed height, so they grow as a
+     smooth scroll passes them and push the target down mid-scroll. Re-aim
+     once the scroll settles, until we're actually there. */
+  document.querySelectorAll('.jump a').forEach(function(a){
+    a.addEventListener('click', function(){
+      var t = document.querySelector(a.getAttribute('href')), tries = 0;
+      if (!t) return;
+      function settle(){
+        if (Math.abs(t.getBoundingClientRect().top - 80) > 4 && tries++ < 8) {
+          t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+          setTimeout(settle, reduced ? 120 : 700);
+        }
+      }
+      setTimeout(settle, reduced ? 120 : 900);
+    });
+  });
 
   /* ---- lightbox ---- */
   var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
