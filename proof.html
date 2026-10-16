@@ -516,23 +516,36 @@ a:focus-visible,.cta:focus-visible{outline:2px solid var(--glow);outline-offset:
   }
 
 
-  /* ---- jump links ----
-     The screenshots are lazy-loaded with no fixed height, so they grow as a
-     smooth scroll passes them and push the target down mid-scroll. Re-aim
-     once the scroll settles, until we're actually there. */
+  /* ---- jump links and #section landings ----
+     The screenshots have no fixed height, so as they load they push later
+     sections down: mid smooth-scroll after a jump-link click, and right after
+     the browser's initial jump when someone arrives on proof.html#section
+     (the resume link). Keep re-aiming until we're actually there. Stops the
+     moment the visitor scrolls themselves, so it never fights them. */
+  var userMoved = false, aimId = 0;
+  ['wheel','touchstart','keydown'].forEach(function(ev){
+    addEventListener(ev, function(){ userMoved = true; }, { passive: true });
+  });
+  function aim(t, smooth, first, every, max){
+    var tries = 0, id = ++aimId;   // a newer aim (another click) retires this one
+    function settle(){
+      if (userMoved || id !== aimId) return;
+      var off = Math.abs(t.getBoundingClientRect().top - 80) > 4;
+      var atBottom = innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
+      if (off && !atBottom) t.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant' });
+      if (tries++ < max) setTimeout(settle, every);
+    }
+    setTimeout(settle, first);
+  }
   document.querySelectorAll('.jump a').forEach(function(a){
     a.addEventListener('click', function(){
-      var t = document.querySelector(a.getAttribute('href')), tries = 0;
-      if (!t) return;
-      function settle(){
-        if (Math.abs(t.getBoundingClientRect().top - 80) > 4 && tries++ < 8) {
-          t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-          setTimeout(settle, reduced ? 120 : 700);
-        }
-      }
-      setTimeout(settle, reduced ? 120 : 900);
+      var t = document.querySelector(a.getAttribute('href'));
+      userMoved = false;
+      if (t) aim(t, !reduced, reduced ? 120 : 900, reduced ? 120 : 700, 8);
     });
   });
+  var landing = location.hash && document.getElementById(location.hash.slice(1));
+  if (landing) aim(landing, false, 150, 250, 24);
 
   /* ---- lightbox ---- */
   var lb = document.getElementById('lb'), lbImg = lb.querySelector('img');
